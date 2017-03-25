@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --output-public-path=dist/"
+    "dev": "gulp watch & node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --output-public-path=dist/"
   },
   "author": "",
   "license": "ISC",
