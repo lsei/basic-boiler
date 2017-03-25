@@ -2,22 +2,23 @@ var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
-	cache: true,
+	cache: false,
+	devtool: 'sourcemap',
+	debug: true,
 	entry: path.join(__dirname, "assets/js/main.js"),
 	output: {
 		path: path.join(__dirname, "dist"),
-		publicPath: "",
 		filename: "bundle.js",
+	},
+	devServer: { 
+		inline: true 
 	},
 	module: {
 		loaders: [
 			{
 			  test: /\.js$/,
 			  exclude: /(node_modules|bower_components)/,
-			  loader: 'babel-loader',
-			  query: {
-			    presets: ['es2015']
-			  }
+			  loaders: ['react-hot', 'babel-loader'],
 			}
 		]
 	},
@@ -32,10 +33,10 @@ module.exports = {
 			}
 		}),
 
-	    new webpack.optimize.UglifyJsPlugin({
-	        compress: {
-	            warnings: false
-	        }
-	    }),
+	    // new webpack.optimize.UglifyJsPlugin({
+	    //     compress: {
+	    //         warnings: false
+	    //     }
+	    // }),
 	]
 };
