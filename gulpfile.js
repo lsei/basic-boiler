@@ -1,6 +1,7 @@
 var gulp           = require('gulp');
 var sass           = require('gulp-sass');
 var gutil          = require('gulp-util');
+var filter         = require('gulp-filter');
 var concat         = require('gulp-concat');
 var uglify         = require('gulp-uglify');
 var sourcemaps     = require('gulp-sourcemaps');
@@ -10,6 +11,7 @@ var autoprefixer   = require('gulp-autoprefixer');
 var webpack   = require('webpack');
 var WebpackDevServer   = require('webpack-dev-server');
 var webpackConfig = require("./webpack.config.js");
+var webpackConfigDist = require("./webpack.config.dist.js");
 
 
 var paths = {
@@ -22,15 +24,16 @@ var paths = {
 gulp.task('styles', function() {
 
   return gulp.src(paths.styles)
-  	  .pipe(sourcemaps.init())
-  		.pipe(concat('styles.min.css'))
-  		.pipe(sass().on('error', sass.logError))
-  		.pipe(autoprefixer({
-			browsers: ['last 4 versions'],
-			cascade: false
-		}))
+      .pipe(sourcemaps.init())
+      .pipe(concat('styles.min.css'))
+      .pipe(sass().on('error', sass.logError))
+      .pipe(autoprefixer({
+      browsers: ['last 4 versions'],
+      cascade: false
+    }))
     .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('dist/css'))
+    .pipe(filter('**/*.css'))
     .pipe(livereload());
 
 });
@@ -62,8 +65,28 @@ gulp.task('webpack', function(callback) {
 
 });
 
+gulp.task('build-production', function(callback) {
+
+  var myConfig = Object.create(webpackConfigDist);
+  var compiler = webpack(myConfig);
+
+  compiler.run(function(err, stats) {
+
+    if(err) throw new gutil.PluginError("webpack:build-production", err);
+
+    gutil.log("[webpack:build-production]", stats.toString({
+      colors: true
+    }));
+
+    callback();
+  });
+
+});
+
 
 gulp.task('default', ['styles']);
+gulp.task('build', ['styles', 'webpack']);
+gulp.task('build-prod', ['styles', 'build-production']);
 
 function errorHandler (error) {
 

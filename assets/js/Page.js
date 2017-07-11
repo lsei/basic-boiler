@@ -1,7 +1,10 @@
+import React from 'react';
 
-class Page {
+class Page extends React.Component {
 	render() {
-		return "abcd";
+		return <div>
+			Hello World!
+		</div>;
 	}
 }
 
