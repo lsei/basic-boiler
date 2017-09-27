@@ -9,3 +9,6 @@ Build for production
 npm run build
 ```
 
+Todos:
+- [ ] Add react router
+- [ ] Basic tests
