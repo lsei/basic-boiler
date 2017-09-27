@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "mocha --compilers js:babel-register --require ./test/helpers.js --require ./test/dom.js --recursive",
+    "tdd": "npm test -- --watch",
     "dev": "gulp watch & node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --output-public-path=dist/",
     "build": "gulp build-prod"
   },
@@ -15,6 +17,10 @@
     "babel-plugin-transform-object-rest-spread": "^6.19.0",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-15": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.1",
@@ -24,7 +30,12 @@
     "gulp-sourcemaps": "^1.9.1",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
+    "jsdom": "^11.2.0",
+    "mocha": "^3.5.3",
+    "react-addons-test-utils": "^15.6.2",
     "react-hot-loader": "^1.3.1",
+    "react-test-renderer": "^16.0.0",
+    "sinon": "^4.0.0",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },
