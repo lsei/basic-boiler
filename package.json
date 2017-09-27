@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register --require ./test/helpers.js --require ./test/dom.js --recursive",
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-register --require ./test/helpers.js --require ./test/dom.js --recursive",
     "tdd": "npm test -- --watch",
     "dev": "gulp watch & node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --output-public-path=dist/",
     "build": "gulp build-prod"
