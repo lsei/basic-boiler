@@ -20,6 +20,18 @@ module.exports = {
 			  test: /\.js$/,
 			  exclude: /(node_modules|bower_components)/,
 			  loaders: ['react-hot', 'babel-loader'],
+			},
+			{
+				test: /\.css$/,
+				loader: 'style-loader'
+			},
+			{
+				test: /\.css$/,
+				loader: 'css-loader',
+				query: {
+					modules: true,
+					localIdentName: '[hash:base64:5]'
+				}
 			}
 		]
 	},
