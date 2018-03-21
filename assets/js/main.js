@@ -1,8 +1,11 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
+import store from './store';
 import Page from './Page';
 
 const rootElem = document.getElementById('root');
 
-ReactDOM.render(<Page />, rootElem);
+ReactDOM.render(<Provider store={store}><Page /></Provider>, rootElem);

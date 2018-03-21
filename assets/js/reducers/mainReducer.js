@@ -6,7 +6,7 @@ export default function main(state = {
 
 }, action) {
     switch (action.type) {
-    	case default: 
+    	default: 
     		return state;
     }
 }
