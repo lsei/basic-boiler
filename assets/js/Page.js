@@ -1,9 +1,8 @@
 import React from 'react';
-import style from './page.css';
 
 class Page extends React.Component {
 	render() {
-		return <div className={style.page}>
+		return <div className="page">
 			Hello World!
 		</div>;
 	}
