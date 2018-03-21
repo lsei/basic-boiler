@@ -5,7 +5,8 @@ import {
 export default function main(state = {
 
 }, action) {
-
-	case default: 
-		return state;
+    switch (action.type) {
+    	case default: 
+    		return state;
+    }
 }
