@@ -6,7 +6,9 @@
   
   "plugins": [
   	"transform-object-rest-spread",
-    "transform-regenerator"
+    "transform-regenerator",
+    "transform-class-properties"
+
   ],
 
   "env": {
